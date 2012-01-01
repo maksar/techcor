@@ -8,11 +8,12 @@ class Project
   end
 
   def describe
-    @metrics.to_a
+    @metrics
   end
 
   def add_metric metric
     @metrics[metric.name] = metric
+    self
   end
 
   def edit_property name, value
@@ -20,7 +21,11 @@ class Project
     return unless value_valid? name, value
 
     (@properties[name] ||= []) << value
-    value
+    self
+  end
+
+  def property name
+    property_history(name).last
   end
 
   def property_history name
