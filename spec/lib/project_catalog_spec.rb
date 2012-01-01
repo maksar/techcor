@@ -13,9 +13,9 @@ describe ProjectCatalog do
   context 'having list of different projects' do
     subject {
       ProjectCatalog.new.
-          add_project(Project.new.add_metric(Metric.new('length', Integer)).edit_property('length', 3)).
-          add_project(Project.new.add_metric(Metric.new('length', Integer)).edit_property('length', 2)).
-          add_project(Project.new.add_metric(Metric.new('length', Integer)).edit_property('length', 1))
+          add_project(Project.new.add_metric(NumberMetric.new('length')).edit_property('length', 3)).
+          add_project(Project.new.add_metric(NumberMetric.new('length')).edit_property('length', 2)).
+          add_project(Project.new.add_metric(NumberMetric.new('length')).edit_property('length', 1))
     }
 
     it 'searches projects by simple criteria' do

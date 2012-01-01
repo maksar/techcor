@@ -9,6 +9,7 @@ describe Project do
       subject.
           add_metric(stub(:name => stub)).
           add_metric(stub(:name => stub))
+
       subject.describe.should have(2).items
     end
   end
@@ -19,7 +20,13 @@ describe Project do
       let(:metric) { Metric.new(name) }
       before { subject.add_metric(metric) }
 
-      it 'returns last value of the property' do
+      it 'converts value before addition' do
+        value = stub
+        metric.should_receive(:convert).with(value)
+        subject.edit_property(name, value)
+      end
+
+      it 'returns last value of the property history' do
         value = 'v'
         subject.edit_property(name, stub).edit_property(name, value)
         subject.property(name).should be value
@@ -29,11 +36,6 @@ describe Project do
         subject.edit_property(name, stub).edit_property(name, stub)
 
         subject.property_history(name).should have_exactly(2).items
-      end
-
-      it 'validates property before adding it' do
-        subject.stub(:value_valid? => false)
-        subject.edit_property(name, stub).should be_false
       end
     end
 

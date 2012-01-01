@@ -18,9 +18,8 @@ class Project
 
   def edit_property name, value
     raise UnknownMetric unless @metrics[name]
-    return unless value_valid? name, value
 
-    (@properties[name] ||= []) << value
+    (@properties[name] ||= []) << @metrics[name].convert(value)
     self
   end
 
@@ -36,7 +35,4 @@ class Project
 
   private
 
-  def value_valid? name, value
-    @metrics[name].validate_value value
-  end
 end
