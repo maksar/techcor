@@ -4,35 +4,47 @@ require 'lib/project'
 
 describe Project do
 
-  it 'returns list of metrics' do
-    2.times { subject.add_metric(stub, stub) }
-    subject.describe.should have(2).items
+  describe 'metrics' do
+    it 'describes itself' do
+      2.times { subject.add_metric(stub(:name => stub)) }
+      subject.describe.should have(2).items
+    end
   end
 
-  it 'allows to modify existing property' do
-    name, type = stub, stub
-    subject.add_metric(name, type)
-    value = stub
-    subject.edit_property(name, value).should be value
-  end
+  describe 'properties' do
+    context 'with one metric' do
+      let(:name) { stub }
+      let(:metric) { Metric.new(name) }
+      before { subject.add_metric(metric) }
 
-  it 'disallows to modify unknown property' do
-    name, value = stub, stub
-    expect { subject.edit_property(name, value) }.to raise_error
-  end
+      it 'allows to modify existing property' do
+        value = stub
+        subject.edit_property(name, value).should be value
+      end
 
-  it 'returns property history' do
-    name, type = stub, stub
-    subject.add_metric(name, type)
+      it 'returns property history' do
+        subject.edit_property(name, value1 = stub)
+        subject.edit_property(name, value2 = stub)
 
-    subject.edit_property(name, value1 = stub)
-    subject.edit_property(name, value2 = stub)
+        subject.property_history(name).should include value1
+        subject.property_history(name).should include value2
+      end
 
-    subject.property_history(name).should include value1
-    subject.property_history(name).should include value2
-  end
+      it 'validates property before adding it' do
+        subject.stub(:value_valid? => false)
+        subject.edit_property(name, stub).should be_false
+      end
+    end
 
-  it 'not returns history for non-existing property' do
-    expect { subject.property_history(stub) }.to raise_error
+    describe 'exceptional cases' do
+      it 'do not allow to modify unknown property' do
+        name, value = stub, stub
+        expect { subject.edit_property(name, value) }.to raise_error
+      end
+
+      it 'do not return history for non-existing property' do
+        expect { subject.property_history(stub) }.to raise_error
+      end
+    end
   end
 end
