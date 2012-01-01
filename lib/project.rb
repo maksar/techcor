@@ -1,6 +1,10 @@
 class Project
+  class UnknownMetric < Exception
+  end
+
   def initialize
     @metrics = {}
+    @properties = {}
   end
 
   def describe
@@ -11,7 +15,16 @@ class Project
     @metrics[name] = value
   end
 
-  def metric name
-    @metrics[name]
+  def edit_property name, value
+    raise UnknownMetric unless @metrics[name]
+
+    (@properties[name] ||= []) << value
+    value
+  end
+
+  def property_history name
+    raise UnknownMetric unless @metrics[name]
+
+    @properties[name]
   end
 end
