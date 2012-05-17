@@ -1,6 +1,5 @@
 class Project
-  class UnknownMetric < Exception
-  end
+  class UnknownMetric < Exception ; end
 
   def initialize
     @metrics = {}
@@ -32,7 +31,5 @@ class Project
 
     @properties[name]
   end
-
-  private
 
 end
