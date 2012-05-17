@@ -1,5 +1,3 @@
-gem 'diff-lcs', :git => 'https://github.com/halostatue/diff-lcs.git'
-gem 'rspec-mocks', :git => 'https://github.com/rspec/rspec-mocks.git'
-gem 'rspec-expectations', :git => 'https://github.com/rspec/rspec-expectations.git'
-gem 'rspec-core', :git => 'https://github.com/rspec/rspec-core.git'
-gem 'rspec', :git => 'https://github.com/rspec/rspec.git'
+source :rubygems
+
+gem 'rspec'
