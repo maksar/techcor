@@ -1,5 +1,4 @@
-$LOAD_PATH.unshift(File.expand_path('../../', File.dirname(__FILE__)))
-
+require 'spec_helper'
 require 'lib/metric'
 require 'lib/number_metric'
 require 'lib/string_metric'

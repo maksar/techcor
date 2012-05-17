@@ -1,3 +1,7 @@
 source :rubygems
 
-gem 'rspec'
+group :test do
+  gem 'rspec'
+  gem 'simplecov'
+  gem 'autotest'
+end

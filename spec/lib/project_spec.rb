@@ -1,5 +1,4 @@
-$LOAD_PATH.unshift(File.expand_path('../../', File.dirname(__FILE__)))
-
+require 'spec_helper'
 require 'lib/project'
 
 describe Project do
