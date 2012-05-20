@@ -5,7 +5,7 @@ require 'lib/metrics/string_metric'
 
 describe Metric do
   context 'simple metric' do
-    subject { Metric.new(stub) }
+    subject { Metric.new(name: stub) }
     it 'not converts value at all' do
       subject.convert('1').should eq '1'
       subject.convert('1abc').should eq '1abc'
@@ -15,7 +15,7 @@ describe Metric do
   end
 
   context 'number metric' do
-    subject { NumberMetric.new(stub) }
+    subject { NumberMetric.new(name: stub) }
     it 'converts value to number' do
       subject.convert('1').should eq 1
       subject.convert('1abc').should eq 1
@@ -25,7 +25,7 @@ describe Metric do
   end
 
   context 'string metric' do
-    subject { StringMetric.new(stub) }
+    subject { StringMetric.new(name: stub) }
     it 'converts value to string' do
       subject.convert(1).should eq '1'
       subject.convert('1abc').should eq '1abc'

@@ -2,37 +2,46 @@ class Project
 
   require_dependency "storage/project_mongo"
 
-  class UnknownMetric < Exception ; end
+  class UnknownMetric < Exception;
+  end
 
-  def initialize
-    @metrics = {}
-    @properties = {}
+  def initialize *args
+    metrics = []
+    super *args
   end
 
   def describe
-    @metrics
+    metrics
   end
 
   def add_metric metric
-    @metrics[metric.name] = metric
+    metrics << metric
     self
   end
 
   def edit_property name, value
-    raise UnknownMetric unless @metrics[name]
+    raise UnknownMetric unless find_metric name
 
-    (@properties[name] ||= []) << Property.new(@metrics[name].convert(value), Time.now)
+    find_metric(name).edit value
     self
   end
 
   def property name
-    property_history(name).last
+    raise UnknownMetric unless find_metric name
+
+    find_metric(name).values.last
   end
 
   def property_history name
-    raise UnknownMetric unless @metrics[name]
+    raise UnknownMetric unless find_metric name
 
-    @properties[name]
+    find_metric(name).values
+  end
+
+  private
+
+  def find_metric name
+    metrics.detect { |metric| metric.name == name }
   end
 
 end

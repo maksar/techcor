@@ -7,8 +7,8 @@ describe Project do
   describe 'metrics' do
     it 'describes itself' do
       subject.
-          add_metric(stub(:name => stub)).
-          add_metric(stub(:name => stub))
+          add_metric(Metric.new(:name => stub)).
+          add_metric(Metric.new(:name => stub))
 
       subject.describe.should have(2).items
     end
@@ -16,8 +16,8 @@ describe Project do
 
   describe 'properties' do
     context 'with one metric' do
-      let(:name) { stub }
-      let(:metric) { Metric.new(name) }
+      let(:name) { stub(:name) }
+      let(:metric) { Metric.new(name: name) }
       before { subject.add_metric(metric) }
 
       it 'converts value before addition' do
