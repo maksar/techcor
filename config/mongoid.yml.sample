@@ -1,0 +1,8 @@
+development:
+  host: localhost
+  database: tc_development
+
+test:
+  host: localhost
+  database: tc_test
+  logger: false

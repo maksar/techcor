@@ -1,12 +1,19 @@
 class Metric
 
-  attr_accessor :name
+  require_dependency "storage/metric_mongo"
 
-  def initialize name
-    @name = name
+  def initialize *args
+    values = []
+    super *args
+  end
+
+  def edit value
+    property_value = PropertyValue.new value: convert(value), created_at: Time.now
+    values << property_value
   end
 
   def convert value
     value
   end
+
 end
