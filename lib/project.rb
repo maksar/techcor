@@ -21,7 +21,7 @@ class Project
   def edit_property name, value
     raise UnknownMetric unless @metrics[name]
 
-    (@properties[name] ||= []) << @metrics[name].convert(value)
+    (@properties[name] ||= []) << Property.new(@metrics[name].convert(value), Time.now)
     self
   end
 

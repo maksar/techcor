@@ -29,7 +29,17 @@ describe Project do
       it 'returns last value of the property history' do
         value = 'v'
         subject.edit_property(name, stub).edit_property(name, value)
-        subject.property(name).should be value
+        subject.property(name).value.should be value
+      end
+
+      it 'stores time when property was edited' do
+        time = stub(:time_before_edit)
+        Time.stub(:now) { time }
+
+        subject.edit_property(name, stub)
+
+        Time.stub(:now) { stub(:time_after_edit) }
+        subject.property(name).created_at.should be time
       end
 
       it 'returns history of the property' do

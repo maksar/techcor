@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'lib/project_catalog'
 require 'lib/project'
+require 'lib/property'
 require 'lib/metrics/metric'
 require 'lib/metrics/number_metric'
 
@@ -21,11 +22,11 @@ describe ProjectCatalog do
     }
 
     it 'searches projects by simple criteria' do
-      subject.projects('property("length") >= 2').should have_exactly(2).items
+      subject.projects('property("length").value >= 2').should have_exactly(2).items
     end
 
     it 'searches projects by complex criteria' do
-      subject.projects('property("length") == 2 || property("length") == 3').should have_exactly(2).items
+      subject.projects('property("length").value == 2 || property("length").value == 3').should have_exactly(2).items
     end
   end
 end
