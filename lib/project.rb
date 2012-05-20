@@ -1,4 +1,7 @@
 class Project
+
+  require_dependency "storage/project_mongo"
+
   class UnknownMetric < Exception ; end
 
   def initialize

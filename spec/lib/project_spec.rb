@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'lib/project'
+require 'lib/metrics/metric'
 
 describe Project do
 
