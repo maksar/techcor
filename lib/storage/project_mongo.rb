@@ -1,5 +1,8 @@
 class Project
   include Mongoid::Document
+  include Mongoid::Timestamps
 
-  embeds_many :metrics
+  field :name
+
+  embeds_many :metrics, cascade_callbacks: true
 end

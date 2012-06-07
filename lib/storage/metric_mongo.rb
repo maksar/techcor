@@ -1,9 +1,10 @@
 class Metric
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :name
 
   embedded_in :project
 
-  embeds_many :values, class_name: 'PropertyValue'
+  embeds_many :values, class_name: 'PropertyValue', cascade_callbacks: true
 end
