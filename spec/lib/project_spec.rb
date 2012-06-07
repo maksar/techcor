@@ -10,7 +10,7 @@ describe Project do
           add_metric(Metric.new(:name => stub)).
           add_metric(Metric.new(:name => stub))
 
-      subject.describe.should have(2).items
+      subject.metrics.should have(2).items
     end
   end
 
