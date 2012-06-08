@@ -8,7 +8,11 @@ group :test do
   gem 'mongoid-rspec'
 end
 
+gem 'pry'
+
 gem 'activesupport', :require => 'active_support/dependencies'
 
 gem 'mongoid'
 gem 'bson_ext'
+
+gem 'hirb'
