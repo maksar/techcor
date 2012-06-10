@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'lib/project_catalog'
 require 'lib/project'
+require 'lib/property_value'
 require 'lib/metrics/metric'
 require 'lib/metrics/number_metric'
 
