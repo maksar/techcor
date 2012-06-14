@@ -5,7 +5,7 @@ class ProjectCatalog
   end
 
   def projects criteria = nil
-    return @projects unless criteria
+    return @projects if criteria.blank?
     @projects.find_all { |project|
       project.instance_eval criteria
     }

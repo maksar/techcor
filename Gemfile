@@ -2,6 +2,8 @@ source :rubygems
 
 group :test do
   gem 'rspec'
+  gem 'cucumber'
+
   gem 'simplecov'
   gem 'autotest'
 
@@ -16,3 +18,4 @@ gem 'mongoid'
 gem 'bson_ext'
 
 gem 'hirb'
+gem 'rake'

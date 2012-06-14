@@ -32,16 +32,6 @@ describe Project do
         subject.property(name).value.should be value
       end
 
-      #it 'stores time when property was edited' do
-      #  time = stub(:time_before_edit)
-      #  Time.stub(:now) { time }
-      #
-      #  subject.edit_property(name, stub)
-      #
-      #  Time.stub(:now) { stub(:time_after_edit) }
-      #  subject.property(name).created_at.should be time
-      #end
-
       it 'returns history of the property' do
         subject.edit_property(name, stub).edit_property(name, stub)
 

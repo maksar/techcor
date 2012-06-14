@@ -1,4 +1,4 @@
-class ProjectPresenter
+class ConsoleFormatter
   def initialize format
     @format = format
   end

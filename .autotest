@@ -8,3 +8,10 @@ class Autotest
   end
 
 end
+
+Autotest.add_hook :initialize do |at|
+  # Ignore files in tmp/
+  at.add_exception %r{^.*/coverage.*}
+  #at.add_exception %r{^./tmp}
+
+end
