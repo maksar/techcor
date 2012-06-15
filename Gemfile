@@ -19,3 +19,4 @@ gem 'bson_ext'
 
 gem 'hirb'
 gem 'rake'
+gem 'gli'
