@@ -1,7 +1,4 @@
 require 'spec_helper'
-require 'lib/metrics/metric'
-require 'lib/metrics/number_metric'
-require 'lib/metrics/string_metric'
 
 describe Metric do
   context 'simple metric' do

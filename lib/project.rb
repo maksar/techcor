@@ -2,8 +2,6 @@ class Project
 
   class UnknownMetric < Exception ; end
 
-  require_dependency "storage/project_mongo"
-
   def add_metric metric
     metrics << metric
     self

@@ -4,17 +4,18 @@ group :test do
   gem 'rspec'
   gem 'cucumber'
 
-  gem 'simplecov'
   gem 'autotest'
+  gem 'simplecov'
+
 
   gem 'mongoid-rspec'
 end
 
 gem 'pry'
 
-gem 'activesupport', :require => 'active_support/dependencies'
+gem 'activesupport'
 
-gem 'mongoid'
+gem 'mongoid', '~> 3.0.0.rc'
 gem 'bson_ext'
 
 gem 'hirb'

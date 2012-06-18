@@ -1,22 +1,19 @@
 require 'spec_helper'
 
-require 'lib/project'
-require 'lib/metrics/metric'
-require 'lib/property_value'
-require 'lib/metrics/number_metric'
+describe ProjectCatalog do
 
-describe Project do
-  it "saves and loads project" do
-    project = Project.new.add_metric(NumberMetric.new(name: 'length')).
-        edit_property("length", 10).
-        edit_property("length", 20)
+  before { Project.delete_all }
 
-    project.save
+  subject {
+    ProjectCatalog.new.
+        add_project(Project.new.add_metric(NumberMetric.new(name: 'length')).edit_property('length', 3)).
+        add_project(Project.new.add_metric(NumberMetric.new(name: 'length')).edit_property('length', 2)).
+        add_project(Project.new.add_metric(NumberMetric.new(name: 'length')).edit_property('length', 1))
+  }
 
-    loaded = Project.where(_id: project.id).last
+  it 'loads list of saved projects' do
+    subject.save
 
-    loaded.property('length').value.should == 20
-
-    project.delete
+    ProjectCatalog.load.projects.should have_exactly(3).items
   end
 end

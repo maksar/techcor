@@ -18,9 +18,15 @@ class ProjectCatalog
 
   def save
     @projects.all? &:save
+    self
   end
 
   def load
     @projects = Project.all
+    self
+  end
+
+  def self.load
+    self.new.load
   end
 end

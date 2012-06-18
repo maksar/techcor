@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'lib/project'
 
 describe Project do
   it { should have_field(:name) }

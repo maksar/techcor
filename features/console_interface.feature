@@ -17,7 +17,7 @@ Feature: Listing projects in console
     Given no projects in catalog
     And empty criteria
     When I'm listing all projects in console
-    Then console output should look like:
+    Then console output should look like
     """
     0 rows in set
     """
@@ -26,7 +26,7 @@ Feature: Listing projects in console
     Given no projects in catalog
     But criteria property('length').value == 1
     When I'm listing all projects in console
-    Then console output should look like:
+    Then console output should look like
     """
     0 rows in set
     """
@@ -34,7 +34,7 @@ Feature: Listing projects in console
   Scenario: listing projects catalog with empty criteria
     Given empty criteria
     When I'm listing all projects in console
-    Then console output should look like:
+    Then console output should look like
     """
     +--------+-------------+
     | Name   | Length      |
@@ -48,7 +48,7 @@ Feature: Listing projects in console
   Scenario: listing projects catalog with simple criteria
     Given criteria property('length').value == 1
     When I'm listing all projects in console
-    Then console output should look like:
+    Then console output should look like
     """
     +--------+-------------+
     | Name   | Length      |
@@ -61,7 +61,7 @@ Feature: Listing projects in console
   Scenario: listing projects catalog with complex criteria
     Given criteria property('length').value == 1 || property('length').value == 2
     When I'm listing all projects in console
-    Then console output should look like:
+    Then console output should look like
     """
     +--------+-------------+
     | Name   | Length      |
@@ -71,7 +71,3 @@ Feature: Listing projects in console
     +--------+-------------+
     2 rows in set
     """
-
-
-
-

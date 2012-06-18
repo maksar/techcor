@@ -1,8 +1,29 @@
 development:
-  host: localhost
-  database: tc_development
+  sessions:
+    default:
+      hosts:
+        - localhost:27017
+      database: tc_development
+      logger: false
+  options:
+    raise_not_found_error: false
 
 test:
-  host: localhost
-  database: tc_test
-  logger: false
+  sessions:
+    default:
+      hosts:
+        - localhost:27017
+      database: tc_test
+      logger: false
+  options:
+    raise_not_found_error: false
+
+production:
+  sessions:
+    default:
+      hosts:
+        - localhost:27017
+      database: tc_production
+      logger: false
+  options:
+    raise_not_found_error: false

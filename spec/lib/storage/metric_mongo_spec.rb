@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'lib/metrics/metric'
 
 describe Metric do
   it { should have_field(:name) }

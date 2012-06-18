@@ -1,13 +1,6 @@
 require 'spec_helper'
-require 'lib/project_catalog'
-require 'lib/project'
-require 'lib/property_value'
-require 'lib/metrics/metric'
-require 'lib/metrics/number_metric'
 
 describe ProjectCatalog do
-
-  before { Project.delete_all }
 
   subject {
     ProjectCatalog.new.
@@ -15,12 +8,6 @@ describe ProjectCatalog do
         add_project(Project.new.add_metric(NumberMetric.new(name: 'length')).edit_property('length', 2)).
         add_project(Project.new.add_metric(NumberMetric.new(name: 'length')).edit_property('length', 1))
   }
-
-  it 'loads list of saved projects' do
-    subject.save
-
-    subject.load.should have_exactly(3).items
-  end
 
   it 'searches projects by simple criteria' do
     subject.projects('property("length").value >= 2').should have_exactly(2).items

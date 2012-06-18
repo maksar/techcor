@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'lib/property_value'
 
 describe PropertyValue do
   it { should have_field(:value) }

@@ -1,53 +1,69 @@
 #!/usr/bin/env ruby
-# 1.9 adds realpath to resolve symlinks; 1.8 doesn't
-# have this method, so we add it so we get resolved symlinks
-# and compatibility
-unless File.respond_to? :realpath
-  class File #:nodoc:
-    def self.realpath path
-      return realpath(File.readlink(path)) if symlink?(path)
-      path
-    end
-  end
-end
-$: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
 require 'rubygems'
-require 'gli'
-require 'tc_version'
 
+ENV['RACK_ENV'] = 'production'
+
+require 'hirb'
+require 'mongoid'
+Mongoid.load!("config/mongoid.yml")
+
+$: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
+
+require 'project'
+require 'property_value'
+require 'project_catalog'
+require 'console_formatter'
+require 'metrics/metric'
+require 'metrics/number_metric'
+require 'metrics/string_metric'
+require 'commands/list_projects'
+require 'commands/add_project'
+require 'commands/add_metric'
+require 'commands/edit_property'
+require 'storage/metric_mongo'
+require 'storage/project_mongo'
+require 'storage/property_value_mongo'
+
+require 'gli'
 include GLI
 
-program_desc 'Describe your application here'
+program_desc 'Command Line Interface for Technical Coordination'
 
-version TC::VERSION
+version '0.0.1'
 
-desc 'Describe some switch here'
-switch [:s,:switch]
-
-desc 'Describe some flag here'
-default_value 'the default'
-arg_name 'The name of the argument'
-flag [:f,:flagname]
-
-pre do |global,command,options,args|
-  # Pre logic here
-  # Return true to proceed; false to abort and not call the
-  # chosen command
-  # Use skips_pre before a command to skip this block
-  # on that command only
-  true
+command :add do |command|
+  command.action do |global, options, args|
+    AddProject.new(args.first).call
+  end
 end
 
-post do |global,command,options,args|
-  # Post logic here
-  # Use skips_post before a command to skip this
-  # block on that command only
+command :add_metric do |command|
+  command.flag :pn, :project_name
+  command.flag :mt, :metric_type
+  command.action do |global, options, args|
+    AddMetric.new(options[:project_name], options[:metric_type], args.first).call
+  end
 end
 
-on_error do |exception|
-  # Error logic here
-  # return false to skip default error handling
-  true
+command :edit_property do |command|
+  command.flag :pn, :project_name
+  command.flag :mn, :metric_name
+  command.action do |global, options, args|
+    EditProperty.new(options[:project_name], options[:metric_name], args.first).call
+  end
+end
+
+desc "List projects from catalog"
+long_desc "Lists projects from catalog matching specified criteria and formats results according to specified --format"
+command :list do |command|
+  command.arg_name 'table format'
+  command.desc 'ruby code for table format'
+  command.default_value "{'Name' => 'name'}"
+  command.flag :f, :format
+
+  command.action do |global, options, args|
+    puts ListProjects.new(options[:format], args.first).call
+  end
 end
 
 exit GLI.run(ARGV)
