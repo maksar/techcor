@@ -6,6 +6,7 @@ group :test do
   gem 'autotest'
   gem 'simplecov'
   gem 'mongoid-rspec'
+  gem 'aruba'
 end
 
 group :development do

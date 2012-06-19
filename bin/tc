@@ -7,7 +7,8 @@ program_desc 'Command Line Interface for Technical Coordination'
 version '0.0.1'
 
 desc "Adds new project"
-long_desc "Allows to create new project. Project name can be specified as argument"
+long_desc "Allows to create new project"
+arg_name '{project_name}'
 command :add do |command|
   command.action do |global, options, args|
     AddProject.new(args.first).call
@@ -15,7 +16,8 @@ command :add do |command|
 end
 
 desc "Adds new metric to the project"
-long_desc "Allows to add new metric to the project. Metric name can be specified as argument"
+long_desc "Allows to add new metric to the project"
+arg_name '{metric_name}'
 command :add_metric do |command|
   command.arg_name 'project name'
   command.desc 'name of the project, to which you want to add metric'
@@ -31,7 +33,8 @@ command :add_metric do |command|
 end
 
 desc "Edits one metric of the project"
-long_desc "Allows to edit one of the project's metrics. Value can be specified as argument"
+long_desc "Allows to edit one of the project's metrics"
+arg_name '{value}'
 command :edit_property do |command|
   command.arg_name 'project name'
   command.desc 'name of the project, property of which you want to edit'
@@ -46,12 +49,13 @@ command :edit_property do |command|
 end
 
 desc "List projects from catalog"
-long_desc "Lists projects from catalog matching specified criteria. Criteria can be specified as argument"
+long_desc "Lists projects from catalog matching specified criteria"
+arg_name '{criteria}'
 command :list do |command|
   command.arg_name 'table format'
   command.desc 'ruby code for table format'
   command.default_value "{'Name' => 'name'}"
-  command.flag :f, :format
+  command.flag :fm, :format
 
   command.action do |global, options, args|
     puts ListProjects.new(options[:format], args.first).call
