@@ -1,52 +1,44 @@
 #!/usr/bin/env ruby
-require 'rubygems'
-
-ENV['RACK_ENV'] = 'production'
-
-require 'hirb'
-require 'mongoid'
-Mongoid.load!("config/mongoid.yml")
-
-$: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
-
-require 'project'
-require 'property_value'
-require 'project_catalog'
-require 'console_formatter'
-require 'metrics/metric'
-require 'metrics/number_metric'
-require 'metrics/string_metric'
-require 'commands/list_projects'
-require 'commands/add_project'
-require 'commands/add_metric'
-require 'commands/edit_property'
-require 'storage/metric_mongo'
-require 'storage/project_mongo'
-require 'storage/property_value_mongo'
 
 require 'gli'
 include GLI
 
 program_desc 'Command Line Interface for Technical Coordination'
-
 version '0.0.1'
 
+desc "Adds new project"
+long_desc "Allows to create new project. Project name can be specified as argument"
 command :add do |command|
   command.action do |global, options, args|
     AddProject.new(args.first).call
   end
 end
 
+desc "Adds new metric to the project"
+long_desc "Allows to add new metric to the project. Metric name can be specified as argument"
 command :add_metric do |command|
+  command.arg_name 'project name'
+  command.desc 'name of the project, to which you want to add metric'
   command.flag :pn, :project_name
+
+  command.arg_name 'metric type'
+  command.desc 'type of the metric you want to add (string, number)'
+  command.default_value "string"
   command.flag :mt, :metric_type
   command.action do |global, options, args|
     AddMetric.new(options[:project_name], options[:metric_type], args.first).call
   end
 end
 
+desc "Edits one metric of the project"
+long_desc "Allows to edit one of the project's metrics. Value can be specified as argument"
 command :edit_property do |command|
+  command.arg_name 'project name'
+  command.desc 'name of the project, property of which you want to edit'
   command.flag :pn, :project_name
+
+  command.arg_name 'metric name'
+  command.desc 'name of the metric, which you want to edit'
   command.flag :mn, :metric_name
   command.action do |global, options, args|
     EditProperty.new(options[:project_name], options[:metric_name], args.first).call
@@ -54,7 +46,7 @@ command :edit_property do |command|
 end
 
 desc "List projects from catalog"
-long_desc "Lists projects from catalog matching specified criteria and formats results according to specified --format"
+long_desc "Lists projects from catalog matching specified criteria. Criteria can be specified as argument"
 command :list do |command|
   command.arg_name 'table format'
   command.desc 'ruby code for table format'
@@ -64,6 +56,34 @@ command :list do |command|
   command.action do |global, options, args|
     puts ListProjects.new(options[:format], args.first).call
   end
+end
+
+DefaultHelpCommand.skips_pre = true
+
+pre do
+  ENV['RACK_ENV'] = 'production'
+
+  require 'hirb'
+  require 'mongoid'
+  Mongoid.load!("config/mongoid.yml")
+
+  $: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
+
+  require 'project'
+  require 'property_value'
+  require 'project_catalog'
+  require 'console_formatter'
+  require 'metrics/metric'
+  require 'metrics/number_metric'
+  require 'metrics/string_metric'
+  require 'storage/metric_mongo'
+  require 'storage/project_mongo'
+  require 'storage/property_value_mongo'
+
+  require 'commands/list_projects'
+  require 'commands/add_project'
+  require 'commands/add_metric'
+  require 'commands/edit_property'
 end
 
 exit GLI.run(ARGV)
