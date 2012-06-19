@@ -1,5 +1,7 @@
 ENV['RACK_ENV'] = 'test'
 require 'mongoid'
+config_folder = File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../config')
+`cp #{config_folder}/mongoid.yml.sample #{config_folder}/mongoid.yml` unless File.exists? "#{config_folder}/mongoid.yml"
 Mongoid.load!("config/mongoid.yml")
 
 require 'mongoid-rspec'

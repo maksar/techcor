@@ -69,7 +69,8 @@ pre do
 
   require 'hirb'
   require 'mongoid'
-  Mongoid.load!("config/mongoid.yml")
+  config_folder = File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../config')
+  Mongoid.load!("#{config_folder}/mongoid.yml")
 
   $: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
 
