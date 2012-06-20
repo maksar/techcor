@@ -71,3 +71,18 @@ Feature: Listing projects in console
     +--------+-------------+
     2 rows in set
     """
+
+  Scenario: listing projects catalog with empty format
+    Given empty criteria
+    And empty format
+    When I'm listing all projects in console
+    Then console output should look like
+    """
+    +--------+--------+
+    | name   | length |
+    +--------+--------+
+    | first  | 2.0    |
+    | second | 1.0    |
+    +--------+--------+
+    2 rows in set
+    """

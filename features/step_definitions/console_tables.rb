@@ -25,6 +25,10 @@ When /^output format$/ do |table|
   end.inspect
 end
 
+When /^empty format$/ do
+  @format = nil
+end
+
 When /^I'm listing all projects in console$/ do
   @console = ListProjects.new(@format, @criteria).call
 end

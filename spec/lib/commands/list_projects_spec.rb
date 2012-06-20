@@ -41,7 +41,7 @@ describe ListProjects do
     subject.stub(:projects => [
         stub(:metrics => [stub(:name => 'metric1'), stub(:name => 'metric2')]),
         stub(:metrics => [stub(:name => 'metric3')])])
-    subject.default_format.should == {'Name' => 'name',
+    subject.default_format.should == {'name' => 'name',
                                       'metric1' => "property('metric1').try(:value)",
                                       'metric2' => "property('metric2').try(:value)",
                                       'metric3' => "property('metric3').try(:value)"}

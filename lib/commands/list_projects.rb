@@ -12,7 +12,7 @@ class ListProjects < Struct.new :format, :criteria
   end
 
   def default_format projects = projects
-    {'Name' => 'name'}.merge Hash[projects.collect(&:metrics).flatten.collect(&:name).flatten.map { |n| [n, "property('#{n}').try(:value)"] }]
+    {'name' => 'name'}.merge Hash[projects.collect(&:metrics).flatten.collect(&:name).flatten.map { |n| [n, "property('#{n}').try(:value)"] }]
   end
 
 end
