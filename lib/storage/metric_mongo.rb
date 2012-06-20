@@ -3,6 +3,7 @@ class Metric
   include Mongoid::Timestamps
 
   field :name
+  validates :name, uniqueness: true
 
   embedded_in :project
 

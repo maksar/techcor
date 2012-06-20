@@ -6,9 +6,9 @@ describe ProjectCatalog do
 
   subject {
     ProjectCatalog.new.
-        add_project(Project.new.add_metric(NumberMetric.new(name: 'length')).edit_property('length', 3)).
-        add_project(Project.new.add_metric(NumberMetric.new(name: 'length')).edit_property('length', 2)).
-        add_project(Project.new.add_metric(NumberMetric.new(name: 'length')).edit_property('length', 1))
+        add_project(Project.new(name: '1').add_metric(NumberMetric.new(name: 'length')).edit_property('length', 3)).
+        add_project(Project.new(name: '2').add_metric(NumberMetric.new(name: 'length')).edit_property('length', 2)).
+        add_project(Project.new(name: '3').add_metric(NumberMetric.new(name: 'length')).edit_property('length', 1))
   }
 
   it 'loads list of saved projects' do
