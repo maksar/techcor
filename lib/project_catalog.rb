@@ -5,8 +5,10 @@ class ProjectCatalog
   end
 
   def projects criteria = nil
-    return @projects if criteria.blank?
-    @projects.find_all { |project|
+    result = @projects.sort_by(&:name)
+
+    return result if criteria.blank?
+    result.find_all { |project|
       project.instance_eval criteria
     }
   end
