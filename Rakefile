@@ -11,7 +11,7 @@ task :seed do
   require_relative 'db/seed'
 end
 
-desc "Run cucumber & rspec to generate aggregated coverage"
+desc "Run Cucumber & RSpec to generate aggregated coverage"
 task :default do
   FileUtils.rm_rf('coverage')
 
