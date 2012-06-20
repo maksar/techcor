@@ -9,7 +9,7 @@ class ConsoleFormatter
           @format.merge(@format) { |_, expression|
             project.instance_eval expression
           }
-        }, :fields => @format.keys
+        }, fields: @format.keys, resize: false
     )
   end
 end
