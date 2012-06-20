@@ -46,6 +46,10 @@ describe Project do
       it 'do not return history for non-existing property' do
         expect { subject.property_history(stub) }.to raise_error
       end
+
+      it 'returns nil for unknown property' do
+        subject.property(stub).should be_nil
+      end
     end
   end
 end

@@ -14,6 +14,8 @@ class Project
 
   def property name
     find_metric(name).values.last
+  rescue UnknownMetric
+    nil
   end
 
   def property_history name

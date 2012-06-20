@@ -54,7 +54,6 @@ arg_name '{criteria}'
 command :list do |command|
   command.arg_name 'table format'
   command.desc 'ruby code for table format'
-  command.default_value "{'Name' => 'name'}"
   command.flag :fm, :format
 
   command.action do |global, options, args|

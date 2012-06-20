@@ -27,4 +27,23 @@ describe ListProjects do
 
     subject.call(formatter, projects).should == result
   end
+
+  it 'uses default format if no format string was specified' do
+    result = stub(:result)
+
+    command = ListProjects.new(nil)
+    command.should_receive(:default_format) { result }
+
+    command.formatter(stub.as_null_object)
+  end
+
+  it 'builds default format as list of all metrics for all projects' do
+    subject.stub(:projects => [
+        stub(:metrics => [stub(:name => 'metric1'), stub(:name => 'metric2')]),
+        stub(:metrics => [stub(:name => 'metric3')])])
+    subject.default_format.should == {'Name' => 'name',
+                                      'metric1' => "property('metric1').try(:value)",
+                                      'metric2' => "property('metric2').try(:value)",
+                                      'metric3' => "property('metric3').try(:value)"}
+  end
 end

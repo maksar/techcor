@@ -7,7 +7,12 @@ class ListProjects < Struct.new :format, :criteria
     catalog.projects criteria
   end
 
-  def formatter(console_formatter = ConsoleFormatter, format = eval(format))
+  def formatter(console_formatter = ConsoleFormatter, format = format ? eval(format) : default_format)
     console_formatter.new(format)
   end
+
+  def default_format projects = projects
+    {'Name' => 'name'}.merge Hash[projects.collect(&:metrics).flatten.collect(&:name).flatten.map { |n| [n, "property('#{n}').try(:value)"] }]
+  end
+
 end

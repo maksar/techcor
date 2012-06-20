@@ -43,4 +43,4 @@ Feature: console command
     Then the output should contain "list [command options] {criteria}"
     And the output should contain "List projects from catalog"
     And the output should contain "Lists projects from catalog matching specified criteria"
-    And the output should have flag "fm/format" with name "table format" and description "ruby code for table format (default: {'Name' => 'name'})"
+    And the output should have flag "fm/format" with name "table format" and description "ruby code for table format"
