@@ -19,7 +19,7 @@ describe ListProjects do
     subject.projects(catalog, criteria).should == result
   end
 
-  it 'presents projects to console' do
+  it 'formats projects to table view' do
     result = stub(:result)
 
     projects = stub(:projects)
