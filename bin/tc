@@ -64,7 +64,7 @@ end
 DefaultHelpCommand.skips_pre = true
 
 pre do
-  ENV['RACK_ENV'] = 'production'
+  ENV['RACK_ENV'] ||= 'production'
 
   require 'hirb'
 

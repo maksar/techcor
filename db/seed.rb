@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] ||= 'development'
 
-require_relative '../bin/tc'
+require_relative '../lib/tc'
 
 Project.delete_all
 
