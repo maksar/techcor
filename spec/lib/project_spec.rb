@@ -29,22 +29,12 @@ describe Project do
         subject.edit_property(name, stub).edit_property(name, value)
         subject.property(name).value.should be value
       end
-
-      it 'returns history of the property' do
-        subject.edit_property(name, stub).edit_property(name, stub)
-
-        subject.property_history(name).should have_exactly(2).items
-      end
     end
 
     describe 'exceptional cases' do
       it 'do not allow to modify unknown property' do
         name, value = stub, stub
         expect { subject.edit_property(name, value) }.to raise_error
-      end
-
-      it 'do not return history for non-existing property' do
-        expect { subject.property_history(stub) }.to raise_error
       end
 
       it 'returns nil for unknown property' do

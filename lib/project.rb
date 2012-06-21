@@ -18,12 +18,6 @@ class Project
     nil
   end
 
-  def property_history name
-    find_metric(name).values
-  end
-
-  private
-
   def find_metric name
     metrics.detect { |metric| metric.name == name } || raise(UnknownMetric)
   end

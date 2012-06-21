@@ -44,3 +44,11 @@ Feature: console command
     And the output should contain "List projects from catalog"
     And the output should contain "Lists projects from catalog matching specified criteria"
     And the output should have flag "fm/format" with name "table format" and description "ruby code for table format"
+
+  Scenario: View help of history command
+    When I run `tc help history`
+    Then the output should contain "history [command options] [{property}],[{another_property}],[...]"
+    And the output should contain " Displays property history"
+    And the output should contain "Displays one or more properties history (list of values over time)"
+    And the output should have flag "pn/project_name" with name "project name" and description "name of the project, property of which you want to edit"
+    And the output should have flag "df/date_format" with name "date format" and description "ruby date format to display time of change (default: %d-%m-%Y)"

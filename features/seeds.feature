@@ -7,7 +7,11 @@ Feature: rake seed task
     When I have wide terminal
 
   Scenario: Generate seed data in database
-    When I work in "test" environment
-    And I run `rake seed`
-    And I run `tc list`
-    Then the output should contain "2 rows in set"
+    Given catalog filled by seeds script
+    And empty format
+    And empty criteria
+    When I'm listing all projects in console
+    Then console output should contain
+    """
+    2 rows in set
+    """

@@ -2,12 +2,10 @@ require 'spec_helper'
 
 describe ListProjects do
   it 'passes format to console formatter' do
-    result = stub(:result)
-
     format = '42'
-    formatter = stub(:formatter).tap { |c| c.should_receive(:new).with(eval(format)) { result } }
+    ConsoleFormatter.should_receive(:new).with(eval(format))
 
-    ListProjects.new(format).formatter(formatter).should == result
+    ListProjects.new(format).formatter
   end
 
   it 'gets list of projects from catalog according to criteria' do
@@ -19,7 +17,7 @@ describe ListProjects do
     subject.projects(catalog, criteria).should == result
   end
 
-  it 'formats projects to table view' do
+  it 'presents projects to table view' do
     result = stub(:result)
 
     projects = stub(:projects)
@@ -34,7 +32,7 @@ describe ListProjects do
     command = ListProjects.new(nil)
     command.should_receive(:default_format) { result }
 
-    command.formatter(stub.as_null_object)
+    command.formatter
   end
 
   it 'builds default format as list of all metrics for all projects' do

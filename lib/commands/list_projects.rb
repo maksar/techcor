@@ -7,8 +7,8 @@ class ListProjects < Struct.new :format, :criteria
     catalog.projects criteria
   end
 
-  def formatter(console_formatter = ConsoleFormatter, format = format ? eval(format) : default_format)
-    console_formatter.new(format)
+  def formatter(format = format ? eval(format) : default_format)
+    ConsoleFormatter.new format
   end
 
   def default_format projects = projects
