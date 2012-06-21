@@ -27,7 +27,7 @@ Feature: console command
     Then the output should contain "add_metric [command options] {metric_name}"
     And the output should contain "Adds new metric to the project"
     And the output should contain "Allows to add new metric to the project"
-    And the output should have flag "mt/metric_type" with name "metric type" and description "type of the metric you want to add (string, number) (default: string)"
+    And the output should have flag "mt/metric_type" with name "metric type" and description "type of the metric you want to add (string, number, boolean) (default: string)"
     And the output should have flag "pn/project_name" with name "project name" and description "name of the project, to which you want to add metric"
 
   Scenario: View help of edit_property command

@@ -7,6 +7,7 @@ Project.delete_all
 ProjectCatalog.new.
     add_project(Project.new(name: 'TC').
                     add_metric(StringMetric.new(name: 'Technology').edit('Ruby')).
+                    add_metric(BooleanMetric.new(name: 'Active').edit(true)).
                     add_metric(StringMetric.new(name: 'SCM').edit('http://github.com/maksar/tc')).
                     add_metric(StringMetric.new(name: 'CI').edit('http://travis-ci.org/#!/maksar/tc')).
                     add_metric(NumberMetric.new(name: 'Unit Tests Coverage').edit(98.55)).
@@ -16,6 +17,7 @@ ProjectCatalog.new.
                     add_metric(NumberMetric.new(name: 'Tests Coverage').edit(100))).
     add_project(Project.new(name: 'Anagrams').
                     add_metric(StringMetric.new(name: 'Technology').edit('Ruby')).
+                    add_metric(BooleanMetric.new(name: 'Active').edit(false)).
                     add_metric(StringMetric.new(name: 'SCM').edit('http://github.com/maksar/anagrams')).
                     add_metric(StringMetric.new(name: 'CI').edit('http://travis-ci.org/#!/maksar/anagrams')).
                     add_metric(NumberMetric.new(name: 'Unit Tests Coverage').edit(100)).

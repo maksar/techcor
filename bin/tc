@@ -24,7 +24,7 @@ command :add_metric do |command|
   command.flag :pn, :project_name
 
   command.arg_name 'metric type'
-  command.desc 'type of the metric you want to add (string, number)'
+  command.desc 'type of the metric you want to add (string, number, boolean)'
   command.default_value "string"
   command.flag :mt, :metric_type
   command.action do |global, options, args|
