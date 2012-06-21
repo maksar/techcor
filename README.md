@@ -7,7 +7,7 @@ This repository contains code, related and useful for performing technical coord
 
 `tc` console tools allows to manage mentioned above information (add projects, edit metrics, etc.). Information itself is stored in `mongodb`. `tc` tool can be used in CI environments to automatically collect metrics (like coverage and build time).
 
-In future, it is planned to have web interface for doing same operation as with cli `bin/tc` tool. For now, use `tc --help` to get information about supported operations and commands.
+In future, it is planned to have web interface for doing same operation as with cli `tc` tool. For now, use `tc --help` to get information about supported operations and commands.
 
 Examples:
 
