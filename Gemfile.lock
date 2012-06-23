@@ -31,7 +31,7 @@ GEM
     ffi (1.0.11)
     gherkin (2.11.0)
       json (>= 1.4.6)
-    gli (1.6.0)
+    gli (2.0.0.rc4)
     hirb (0.6.2)
     i18n (0.6.0)
     json (1.7.3)
@@ -77,7 +77,7 @@ DEPENDENCIES
   autotest
   bson_ext
   cucumber
-  gli
+  gli (~> 2.0.0.rc)
   hirb
   mongoid (~> 3.0.0.rc)
   mongoid-rspec

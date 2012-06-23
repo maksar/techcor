@@ -9,16 +9,15 @@ Feature: console command
   Scenario: View general help in cli
     When I run `tc`
     Then the output should contain "Command Line Interface for Technical Coordination"
-    And the output should contain "usage: tc [global options] command [command options]"
+    And the output should contain "tc [global options] command [command options] [arguments...]"
     And the output have option "add" with description "Adds new project"
     And the output have option "add_metric" with description "Adds new metric to the project"
     And the output have option "edit_property" with description "Edits one metric of the project"
     And the output have option "list" with description "List projects from catalog"
-    And the output have option "help" with description "Shows list of commands or help for one command"
 
   Scenario: View help of add command
     When I run `tc help add`
-    Then the output should contain "add {project_name}"
+    Then the output should contain "add [command options] {project_name}"
     And the output should contain "Adds new project"
     And the output should contain "Allows to create new project"
 

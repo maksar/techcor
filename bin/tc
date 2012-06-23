@@ -1,94 +1,10 @@
 #!/usr/bin/env ruby
 
 require 'gli'
-include GLI
+include GLI::App
 
-program_desc 'Command Line Interface for Technical Coordination'
-version '0.0.1'
+$: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
 
-desc "Adds new project"
-long_desc "Allows to create new project"
-arg_name '{project_name}'
-command :add do |command|
-  command.action do |global, options, args|
-    AddProject.new(args.first).call
-  end
-end
+commands_from 'commands/gli'
 
-desc "Adds new metric to the project"
-long_desc "Allows to add new metric to the project"
-arg_name '{metric_name}'
-command :add_metric do |command|
-  command.arg_name 'project name'
-  command.desc 'name of the project, to which you want to add metric'
-  command.flag :pn, :project_name
-
-  command.arg_name 'metric type'
-  command.desc 'type of the metric you want to add (string, number, boolean)'
-  command.default_value "string"
-  command.flag :mt, :metric_type
-
-  command.action do |global, options, args|
-    AddMetric.new(options[:project_name], options[:metric_type], args.first).call
-  end
-end
-
-desc "Edits one metric of the project"
-long_desc "Allows to edit one of the project's metrics"
-arg_name '{value}'
-command :edit_property do |command|
-  command.arg_name 'project name'
-  command.desc 'name of the project, property of which you want to edit'
-  command.flag :pn, :project_name
-
-  command.arg_name 'metric name'
-  command.desc 'name of the metric, which you want to edit'
-  command.flag :mn, :metric_name
-
-  command.action do |global, options, args|
-    EditProperty.new(options[:project_name], options[:metric_name], args.first).call
-  end
-end
-
-desc "List projects from catalog"
-long_desc "Lists projects from catalog matching specified criteria"
-arg_name '{criteria}'
-command :list do |command|
-  command.arg_name 'table format'
-  command.desc 'ruby code for table format'
-  command.flag :fm, :format
-
-  command.action do |global, options, args|
-    puts ListProjects.new(options[:format], args.first).call
-  end
-end
-
-desc "Displays property history"
-long_desc "Displays one or more properties history (list of values over time)"
-arg_name '[{property}],[{another_property}],[...]'
-command :history do |command|
-  command.arg_name 'project name'
-  command.desc 'name of the project, property of which you want to edit'
-  command.flag :pn, :project_name
-
-  command.arg_name 'date format'
-  command.desc 'ruby date format to display time of change'
-  command.default_value "%d-%m-%Y"
-  command.flag :df, :date_format
-
-  command.action do |global, options, args|
-    puts ViewHistory.new(options[:project_name], options[:date_format], args.first.try(:split, ',')).call
-  end
-end
-
-DefaultHelpCommand.skips_pre = true
-
-pre do
-  ENV['RACK_ENV'] ||= 'production'
-
-  require 'hirb'
-
-  require_relative '../lib/tc'
-end
-
-exit GLI.run(ARGV)
+exit run(ARGV)
