@@ -47,7 +47,14 @@ Feature: console command
   Scenario: View help of history command
     When I run `tc help history`
     Then the output should contain "history [command options] [{property}],[{another_property}],[...]"
-    And the output should contain " Displays property history"
+    And the output should contain "Displays property history"
     And the output should contain "Displays one or more properties history (list of values over time)"
     And the output should have flag "pn/project_name" with name "project name" and description "name of the project, property of which you want to edit"
+    And the output should have flag "df/date_format" with name "date format" and description "ruby date format to display time of change (default: %d-%m-%Y)"
+
+  Scenario: View help of describe command
+    When I run `tc help describe`
+    Then the output should contain "describe [command options] {project_name}"
+    And the output should contain "Describes current state of the project"
+    And the output should contain "Displays current metrics of the project, date and author of last modification"
     And the output should have flag "df/date_format" with name "date format" and description "ruby date format to display time of change (default: %d-%m-%Y)"
