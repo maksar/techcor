@@ -1,4 +1,5 @@
 [![Build Status](https://secure.travis-ci.org/maksar/tc.png)](http://travis-ci.org/maksar/tc)
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/maksar/tc)
 
 Technical Coordination project
 ---------------
