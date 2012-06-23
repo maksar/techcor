@@ -16,7 +16,11 @@ class DescribeProject < Struct.new :project_name, :date_format
   end
 
   def format date_format = date_format
-    #TODO i18n
-    {'Metric' => 'name', 'Value' => 'value', 'Changed at' => "created_at.strftime('#{date_format}')", 'Changed by' => "'TODO'"}
+    {
+        'Metric' => 'name',
+        'Value' => 'value',
+        'Changed at' => "created_at.strftime('#{date_format}')",
+        'Changed by' => "'TODO'"
+    }
   end
 end
