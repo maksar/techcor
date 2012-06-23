@@ -12,7 +12,7 @@ describe ViewHistory do
 
   it 'does not present unknown properties' do
     formatter = stub(:formatter).tap { |f| f.should_receive(:present).with([]) }
-    project = stub(:project).tap { |p| p.should_receive(:find_metric).and_raise(Project::UnknownMetric) }
+    project = stub(:project).tap { |p| p.should_receive(:property) { nil } }
     subject.stub(:project => project)
     subject.stub(:properties => ['UnkwownProperty'])
 
@@ -35,8 +35,8 @@ describe ViewHistory do
   it 'collects metrics from project' do
     project = stub(:project)
     metric1, metric2 = stub(:metric), stub(:metric)
-    project.should_receive(:find_metric).with('metric1') { metric1 }
-    project.should_receive(:find_metric).with('metric2') { metric2 }
+    project.should_receive(:property).with('metric1') { metric1 }
+    project.should_receive(:property).with('metric2') { metric2 }
     subject.metrics(project, %w(metric1 metric2)).should == [metric1, metric2]
   end
 

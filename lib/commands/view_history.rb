@@ -21,11 +21,7 @@ class ViewHistory < Struct.new :project_name, :date_format, :properties
 
   def metrics project = project, properties = properties
     properties.map do |property|
-      begin
-        project.find_metric property
-      rescue Project::UnknownMetric
-        nil
-      end
+      project.property property
     end.compact
   end
 
