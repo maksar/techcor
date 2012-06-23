@@ -4,8 +4,8 @@ class Project
     self
   end
 
-  def edit_property name, value
-    property(name).edit value
+  def edit_property name, value, user
+    property(name).edit value, user
     self
   end
 

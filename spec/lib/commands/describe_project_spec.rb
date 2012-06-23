@@ -27,8 +27,8 @@ describe DescribeProject do
     subject.format("DATE_FORMAT").should == {
         'Metric' => 'name',
         'Value' => 'value',
-        'Changed at' => "created_at.strftime('DATE_FORMAT')",
-        'Changed by' => "'TODO'"
+        'Changed at' => "last_updated_at.strftime('DATE_FORMAT')",
+        'Changed by' => "last_updated_by"
     }
   end
 

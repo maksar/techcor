@@ -12,18 +12,18 @@ Feature: Describing project
     When I'm describing project
     Then console output should look like
     """
-    +-------------------------+-----------------------------------+------------+------------+
-    | Metric                  | Value                             | Changed at | Changed by |
-    +-------------------------+-----------------------------------+------------+------------+
-    | Technology              | Ruby                              | ----       | TODO       |
-    | Active                  | true                              | ----       | TODO       |
-    | SCM                     | http://github.com/maksar/tc       | ----       | TODO       |
-    | CI                      | http://travis-ci.org/#!/maksar/tc | ----       | TODO       |
-    | Unit Tests Coverage     | 100.0                             | ----       | TODO       |
-    | Unit Tests Count        | 100.0                             | ----       | TODO       |
-    | Cucumber Tests Coverage | 92.68                             | ----       | TODO       |
-    | Cucumber Tests Count    | 10.0                              | ----       | TODO       |
-    | Tests Coverage          | 100.0                             | ----       | TODO       |
-    +-------------------------+-----------------------------------+------------+------------+
+    +-------------------------+-----------------------------------+------------+-------------+
+    | Metric                  | Value                             | Changed at | Changed by  |
+    +-------------------------+-----------------------------------+------------+-------------+
+    | Technology              | Ruby                              | ----       | a.shestakov |
+    | Active                  | true                              | ----       | a.shestakov |
+    | SCM                     | http://github.com/maksar/tc       | ----       | a.shestakov |
+    | CI                      | http://travis-ci.org/#!/maksar/tc | ----       | a.shestakov |
+    | Unit Tests Coverage     | 100.0                             | ----       | a.shestakov |
+    | Unit Tests Count        | 100.0                             | ----       | a.shestakov |
+    | Cucumber Tests Coverage | 92.68                             | ----       | a.shestakov |
+    | Cucumber Tests Count    | 10.0                              | ----       | a.shestakov |
+    | Tests Coverage          | 100.0                             | ----       | a.shestakov |
+    +-------------------------+-----------------------------------+------------+-------------+
     9 rows in set
     """

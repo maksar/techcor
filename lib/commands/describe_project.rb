@@ -19,8 +19,8 @@ class DescribeProject < Struct.new :project_name, :date_format
     {
         'Metric' => 'name',
         'Value' => 'value',
-        'Changed at' => "created_at.strftime('#{date_format}')",
-        'Changed by' => "'TODO'"
+        'Changed at' => "last_updated_at.strftime('#{date_format}')",
+        'Changed by' => "last_updated_by"
     }
   end
 end

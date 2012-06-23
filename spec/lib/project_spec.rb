@@ -21,12 +21,12 @@ describe Project do
       it 'converts value before addition' do
         value = stub
         metric.should_receive(:convert).with(value)
-        subject.edit_property(name, value)
+        subject.edit_property(name, value, stub)
       end
 
       it 'returns last value of the property history' do
         value = 'v'
-        subject.edit_property(name, stub).edit_property(name, value)
+        subject.edit_property(name, stub, stub).edit_property(name, value, stub)
         subject.property(name).value.should be value
       end
     end
