@@ -79,7 +79,7 @@ Feature: Listing projects in console
       Then console output should look like
       """
       +----------+------------+--------+-----------------------------------+-----------------------------------------+---------------------+------------------+----------------+-------------------------+----------------------+
-      | name     | Technology | Active | SCM                               | CI                                      | Unit Tests Coverage | Unit Tests Count | Tests Coverage | Cucumber Tests Coverage | Cucumber Tests Count |
+      | Name     | Technology | Active | SCM                               | CI                                      | Unit Tests Coverage | Unit Tests Count | Tests Coverage | Cucumber Tests Coverage | Cucumber Tests Count |
       +----------+------------+--------+-----------------------------------+-----------------------------------------+---------------------+------------------+----------------+-------------------------+----------------------+
       | Anagrams | Ruby       | false  | http://github.com/maksar/anagrams | http://travis-ci.org/#!/maksar/anagrams | 100.0               | 6.0              | 100.0          |                         |                      |
       | TC       | Ruby       | true   | http://github.com/maksar/tc       | http://travis-ci.org/#!/maksar/tc       | 100.0               | 100.0            | 100.0          | 92.68                   | 10.0                 |

@@ -1,6 +1,6 @@
 class ListProjects < Struct.new :format, :criteria
   def call formatter = formatter, projects = projects
-    formatter.present(projects)
+    formatter.present projects
   end
 
   def projects catalog = ProjectCatalog.load, criteria = criteria
@@ -12,7 +12,21 @@ class ListProjects < Struct.new :format, :criteria
   end
 
   def default_format projects = projects
-    {'name' => 'name'}.merge Hash[projects.collect(&:metrics).flatten.collect(&:name).flatten.map { |n| [n, "property('#{n}').try(:value)"] }]
+    {'Name' => 'name'}.merge list_properties_format properties
+  end
+
+  private
+
+  def list_properties_format properties
+    Hash[properties.map { |p| [p, "property('#{p}').try(:value)"] }]
+  end
+
+  def properties
+    metrics.collect(&:name).flatten
+  end
+
+  def metrics
+    projects.collect(&:metrics).flatten
   end
 
 end
