@@ -21,18 +21,18 @@ task :default do
 end
 
 require 'jeweler'
-require_relative 'lib/tc/version'
+require_relative 'lib/techcor/version'
 Jeweler::Tasks.new do |gem|
-  gem.name = "tc"
-  gem.homepage = "http://github.com/maksar/tc"
+  gem.name = "techcor"
+  gem.homepage = "http://github.com/maksar/techcor"
   gem.license = "MIT"
   gem.summary = %Q{Console tool allowing to perform technical coordination activities}
-  gem.description = %Q{This gem provides 'tc' console utility, which allows to collect and manage different metrics on software projects.}
+  gem.description = %Q{This gem provides 'techcor' console utility, which allows to collect and manage different metrics on software projects.}
   gem.email = "Maksar.mail@gmail.com"
   gem.authors = ["Alexander Shestakov"]
 
-  gem.executables = %w(tc)
-  gem.version = TC::Version::STRING
+  gem.executables = %w(techcor)
+  gem.version = Techcor::Version::STRING
 
   gem.files.exclude '.*'
   gem.files.exclude '*.gemspec'

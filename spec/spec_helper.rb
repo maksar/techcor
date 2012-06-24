@@ -5,4 +5,4 @@ RSpec.configure do |configuration|
   configuration.include Mongoid::Matchers
 end
 
-require_relative '../lib/tc'
+require_relative '../lib/techcor'

@@ -1,4 +1,4 @@
-class TcCli
+class TechcorCli
   desc "Adds new project"
   long_desc "Allows to create new project"
   arg_name '{project_name}'

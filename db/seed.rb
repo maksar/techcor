@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] ||= 'development'
 
-require_relative '../lib/tc'
+require_relative '../lib/techcor'
 
 def seed
   Project.delete_all
@@ -12,8 +12,8 @@ def seed
       Project.new(name: 'TC').
           add_metric(StringMetric.new(name: 'Technology').edit('Ruby', user)).
           add_metric(BooleanMetric.new(name: 'Active').edit(true, user)).
-          add_metric(StringMetric.new(name: 'SCM').edit('http://github.com/maksar/tc', user)).
-          add_metric(StringMetric.new(name: 'CI').edit('http://travis-ci.org/#!/maksar/tc', user)).
+          add_metric(StringMetric.new(name: 'SCM').edit('http://github.com/maksar/techcor', user)).
+          add_metric(StringMetric.new(name: 'CI').edit('http://travis-ci.org/#!/maksar/techcor', user)).
           add_metric(NumberMetric.new(name: 'Unit Tests Coverage').edit(98.55, user)).
           add_metric(NumberMetric.new(name: 'Unit Tests Count').edit(40, user)).
           add_metric(NumberMetric.new(name: 'Cucumber Tests Coverage').edit(92.68, user)).

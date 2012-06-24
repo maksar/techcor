@@ -1,4 +1,4 @@
-class TcCli
+class TechcorCli
   desc "List projects from catalog"
   long_desc "Lists projects from catalog matching specified criteria"
   arg_name '{criteria}'

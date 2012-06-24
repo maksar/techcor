@@ -1,4 +1,4 @@
-class TcCli
+class TechcorCli
   desc "Edits one metric of the project"
   long_desc "Allows to edit one of the project's metrics"
   arg_name '{value}'

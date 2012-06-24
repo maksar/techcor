@@ -1,4 +1,4 @@
-class TcCli
+class TechcorCli
   desc "Describes current state of the project"
   long_desc "Displays current metrics of the project, date and author of last modification"
   arg_name '{project_name}'

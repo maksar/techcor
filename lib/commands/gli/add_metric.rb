@@ -1,4 +1,4 @@
-class TcCli
+class TechcorCli
   desc "Adds new metric to the project"
   long_desc "Allows to add new metric to the project"
   arg_name '{metric_name}'

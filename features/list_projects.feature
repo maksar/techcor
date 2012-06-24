@@ -63,7 +63,7 @@ Feature: Listing projects in console
     | Name     | Technology | Active | SCM                               | CI                                      | Unit Tests Coverage | Unit Tests Count | Tests Coverage | Cucumber Tests Coverage | Cucumber Tests Count |
     +----------+------------+--------+-----------------------------------+-----------------------------------------+---------------------+------------------+----------------+-------------------------+----------------------+
     | Anagrams | Ruby       | false  | http://github.com/maksar/anagrams | http://travis-ci.org/#!/maksar/anagrams | 100.0               | 6.0              | 100.0          |                         |                      |
-    | TC       | Ruby       | true   | http://github.com/maksar/tc       | http://travis-ci.org/#!/maksar/tc       | 100.0               | 100.0            | 100.0          | 92.68                   | 10.0                 |
+    | TC       | Ruby       | true   | http://github.com/maksar/techcor  | http://travis-ci.org/#!/maksar/techcor  | 100.0               | 100.0            | 100.0          | 92.68                   | 10.0                 |
     +----------+------------+--------+-----------------------------------+-----------------------------------------+---------------------+------------------+----------------+-------------------------+----------------------+
     2 rows in set
     """

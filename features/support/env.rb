@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] = 'test'
 
-require_relative '../../lib/tc'
+require_relative '../../lib/techcor'
 
 require 'tempfile'
 require 'gli_interface'

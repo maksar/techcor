@@ -1,4 +1,4 @@
-class TcCli
+class TechcorCli
   desc "Displays property history"
   long_desc "Displays one or more properties history (list of values over time)"
   arg_name '[{property}],[{another_property}],[...]'

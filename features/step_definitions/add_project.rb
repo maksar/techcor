@@ -2,7 +2,7 @@ When /^I execute cli "(.*)"$/ do |command|
   old_stdout = $stdout
   $stdout = Tempfile.new("")
 
-  TcCli.exec Shellwords.shellwords command
+  TechcorCli.exec Shellwords.shellwords command
 
   $stdout.rewind
   @console = $stdout.readlines.join

@@ -4,15 +4,15 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "tc"
-  s.version = "0.0.1"
+  s.name = "techcor"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alexander Shestakov"]
   s.date = "2012-06-24"
-  s.description = "This gem provides 'tc' console utility, which allows to collect and manage different metrics on software projects."
+  s.description = "This gem provides 'techcor' console utility, which allows to collect and manage different metrics on software projects."
   s.email = "Maksar.mail@gmail.com"
-  s.executables = ["tc"]
+  s.executables = ["techcor"]
   s.extra_rdoc_files = [
     "README.md"
   ]
@@ -21,7 +21,6 @@ Gem::Specification.new do |s|
     "Gemfile.lock",
     "README.md",
     "Rakefile",
-    "bin/tc",
     "config/cucumber.yml",
     "config/mongoid.yml",
     "config/mongoid.yml.sample",
@@ -67,8 +66,8 @@ Gem::Specification.new do |s|
     "lib/storage/metric_mongo.rb",
     "lib/storage/project_mongo.rb",
     "lib/storage/property_value_mongo.rb",
-    "lib/tc.rb",
-    "lib/tc/version.rb",
+    "lib/techcor.rb",
+    "lib/techcor/version.rb",
     "spec/integration/mongo_spec.rb",
     "spec/lib/commands/add_metric_spec.rb",
     "spec/lib/commands/add_project_spec.rb",
@@ -88,7 +87,7 @@ Gem::Specification.new do |s|
     "spec/lib/storage/property_value_mongo_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = "http://github.com/maksar/tc"
+  s.homepage = "http://github.com/maksar/techcor"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
