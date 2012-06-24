@@ -16,7 +16,7 @@ class ViewHistory < Struct.new :project_name, :date_format, :properties
   end
 
   def properties project = project
-    self[:properties] || project.metrics.collect(&:name)
+    self[:properties].present? ? self[:properties] : project.metrics.collect(&:name)
   end
 
   def metrics project = project, properties = properties

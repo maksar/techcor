@@ -3,9 +3,6 @@ Feature: rake support
   As a console user
   I want use rake tasks
 
-  Background:
-    When I have wide terminal
-
   Scenario: View list of rake commands
     When I run `rake -T`
     And the output should contain rake command "default" with description "Run Cucumber & RSpec to generate aggregated coverage"

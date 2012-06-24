@@ -35,5 +35,3 @@ def seed
                       add_metric(NumberMetric.new(name: 'Tests Coverage').edit(100, 'john.dow'))).
       save
 end
-
-seed

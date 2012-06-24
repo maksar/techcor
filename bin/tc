@@ -1,10 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'gli'
-include GLI::App
+require_relative '../lib/gli_interface'
 
-$: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
+exit TcCli.exec(ARGV)
 
-commands_from 'commands/gli'
-
-exit run(ARGV)

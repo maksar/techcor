@@ -14,7 +14,7 @@ describe ViewHistory do
     formatter = stub(:formatter).tap { |f| f.should_receive(:present).with([]) }
     project = stub(:project).tap { |p| p.should_receive(:property) { nil } }
     subject.stub(:project => project)
-    subject.stub(:properties => ['UnkwownProperty'])
+    subject.stub(:properties => ['Unknown Property'])
 
     subject.call(formatter)
   end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe AddMetric do
   it 'adds metric to the project' do
-    result = stub(:result).tap { |r| r.should_receive(:save) }
+    result = stub(:result)
     metric = stub(:metric)
     project = stub(:project).tap { |p| p.should_receive(:add_metric).with(metric) { result } }
     subject.call(project, metric)

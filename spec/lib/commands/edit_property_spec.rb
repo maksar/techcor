@@ -5,8 +5,9 @@ describe EditProperty do
     result = stub(:result)
     metric_name = stub(:metric_name)
     value = stub(:value)
-    project = stub(:project).tap { |p| p.should_receive(:edit_property).with(metric_name, value) { result } }
-    subject.call(project, metric_name, value).should == result
+    author = stub(:author)
+    project = stub(:project).tap { |p| p.should_receive(:edit_property).with(metric_name, value, author) { result } }
+    subject.call(project, metric_name, value, author).should == result
   end
 
   it 'find project' do

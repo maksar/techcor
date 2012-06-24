@@ -6,15 +6,15 @@ class Metric
   end
 
   def value
-    values.last.value
+    values.last.try :value
   end
 
   def last_updated_by
-    values.last.created_by
+    values.last.try :created_by
   end
 
   def last_updated_at
-    values.last.created_at
+    values.last.try :created_at
   end
 
   def convert value

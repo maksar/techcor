@@ -3,14 +3,10 @@ Feature: Describing project
   As a console user
   I want to see state of all current project metrics
 
-  Background:
-    Given catalog filled by seeds script
-    And date format "----"
-
   Scenario: describing project
-    Given project "TC"
-    When I'm describing project
-    Then console output should look like
+    Given catalog filled by seeds script
+    When I execute cli "describe --df ---- TC"
+    Then the cli output should contain:
     """
     +-------------------------+-----------------------------------+------------+-------------+
     | Metric                  | Value                             | Changed at | Changed by  |

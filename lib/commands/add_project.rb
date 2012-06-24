@@ -1,5 +1,5 @@
 class AddProject < Struct.new :name
-  def call
-    Project.new(name: name).tap { |p| p.save }
+  def call name = name
+    Project.create(name: name)
   end
 end

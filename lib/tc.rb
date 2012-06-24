@@ -1,3 +1,4 @@
+require 'hirb'
 require 'mongoid'
 
 config_folder = File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../config')

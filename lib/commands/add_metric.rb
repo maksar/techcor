@@ -1,6 +1,6 @@
 class AddMetric < Struct.new :project_name, :type, :name
   def call project = project, metric = metric
-    project.add_metric(metric).save
+    project.add_metric(metric)
   end
 
   def project project_name = project_name

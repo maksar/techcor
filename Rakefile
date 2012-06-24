@@ -9,6 +9,7 @@ end
 desc "Creates bunch of test data in database"
 task :seed do
   require_relative 'db/seed'
+  seed
 end
 
 desc "Run Cucumber & RSpec to generate aggregated coverage"

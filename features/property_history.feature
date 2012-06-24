@@ -5,22 +5,14 @@ Feature: Property history
 
   Background:
     Given catalog filled by seeds script
-    And date format "----"
 
   Scenario: trying to list non-existing property
-    Given property "non existing property"
-    And project "TC"
-    When I'm viewing property history
-    Then console output should look like
-    """
-    0 rows in set
-    """
+    When I execute cli "history --pn TC --df ---- "non existing property""
+    Then the cli output should contain "0 rows in set"
 
   Scenario: listing property history
-    Given property "Unit Tests Count"
-    And project "TC"
-    When I'm viewing property history
-    Then console output should look like
+    When I execute cli "history --pn TC --df ---- "Unit Tests Count""
+    Then the cli output should contain:
     """
     +------+------------------+
     | Date | Unit Tests Count |
@@ -34,10 +26,8 @@ Feature: Property history
     """
 
   Scenario: listing all properties history
-    Given property not set
-    And project "TC"
-    When I'm viewing property history
-    Then console output should look like
+    When I execute cli "history --pn TC --df ----"
+    Then the cli output should contain:
     """
     +------+------------+--------+-----------------------------+-----------------------------------+---------------------+------------------+-------------------------+----------------------+----------------+
     | Date | Technology | Active | SCM                         | CI                                | Unit Tests Coverage | Unit Tests Count | Cucumber Tests Coverage | Cucumber Tests Count | Tests Coverage |

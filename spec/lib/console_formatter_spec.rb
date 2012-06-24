@@ -1,13 +1,6 @@
 require 'spec_helper'
 
 describe ConsoleFormatter do
-  module Hirb
-    module Helpers
-      module AutoTable
-      end
-    end
-  end
-
   it 'renders prepared records with help of Hirb library' do
     format = stub(:format, :keys => stub(:format_keys))
     records = stub(:records)
