@@ -1,4 +1,6 @@
 require 'gli'
+ENV["COLUMNS"] = "1000"
+ENV["LINES"] = "1000"
 
 $:.unshift File.expand_path(File.dirname(File.realpath(__FILE__)))
 
