@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
     "Gemfile.lock",
     "README.md",
     "Rakefile",
+    "bin/techcor",
     "config/cucumber.yml",
     "config/mongoid.yml",
     "config/mongoid.yml.sample",
