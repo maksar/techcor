@@ -10,11 +10,11 @@ describe ProjectCatalog do
   }
 
   it 'searches projects by simple criteria' do
-    subject.projects('property("length").value >= 2').should have_exactly(2).items
+    subject.projects('property("length").last_value >= 2').should have_exactly(2).items
   end
 
   it 'searches projects by complex criteria' do
-    subject.projects('property("length").value == 2 || property("length").value == 3').should have_exactly(2).items
+    subject.projects('property("length").last_value == 2 || property("length").last_value == 3').should have_exactly(2).items
   end
 
   it 'orders projects by name' do

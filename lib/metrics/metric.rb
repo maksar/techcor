@@ -5,7 +5,7 @@ class Metric
     self
   end
 
-  def value
+  def last_value
     values.last.try :value
   end
 

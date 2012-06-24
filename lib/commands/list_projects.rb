@@ -18,7 +18,7 @@ class ListProjects < Struct.new :format, :criteria
   private
 
   def list_properties_format properties
-    Hash[properties.map { |p| [p, "property('#{p}').try(:value)"] }]
+    Hash[properties.map { |p| [p, "property('#{p}').try :last_value"] }]
   end
 
   def properties

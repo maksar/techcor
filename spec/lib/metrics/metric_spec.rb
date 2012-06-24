@@ -9,7 +9,7 @@ describe Metric do
   it 'returns last value' do
     value = stub(:value)
     subject.stub(:values => [stub, stub, stub(:last_value, :value => value)])
-    subject.value.should == value
+    subject.last_value.should == value
   end
 
   it 'returns last updater' do

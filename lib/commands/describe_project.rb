@@ -18,8 +18,8 @@ class DescribeProject < Struct.new :project_name, :date_format
   def format date_format = date_format
     {
         'Metric' => 'name',
-        'Value' => 'value',
-        'Changed at' => "last_updated_at.strftime('#{date_format}')",
+        'Value' => 'last_value',
+        'Changed at' => "last_updated_at.try :strftime, '#{date_format}'",
         'Changed by' => "last_updated_by"
     }
   end

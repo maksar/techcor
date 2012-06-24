@@ -5,17 +5,17 @@ Feature: Listing projects in console
 
   Scenario: listing empty project catalog with empty criteria
     Given no projects in catalog
-    When I execute cli "list --fm "{'Name' => 'name', 'Count' => '\\'Count: \\' + property(\\'Unit Tests Count\\').value.to_s'}" "
+    When I execute cli "list --fm "{'Name' => 'name', 'Count' => '\\'Count: \\' + property(\\'Unit Tests Count\\').last_value.to_s'}" "
     Then the cli output should contain "0 rows in set"
 
   Scenario: listing empty project catalog with specified criteria
     Given no projects in catalog
-    When I execute cli "list --fm "{'Name' => 'name', 'Count' => '\\'Count: \\' + property(\\'Unit Tests Count\\').value.to_s'}" "property('Unit Tests Count').value == 1""
+    When I execute cli "list --fm "{'Name' => 'name', 'Count' => '\\'Count: \\' + property(\\'Unit Tests Count\\').last_value.to_s'}" "property('Unit Tests Count').last_value == 1""
     Then the cli output should contain "0 rows in set"
 
   Scenario: listing projects catalog with empty criteria
     Given catalog filled by seeds script
-    When I execute cli "list --fm "{'Name' => 'name', 'Count' => '\\'Count: \\' + property(\\'Unit Tests Count\\').value.to_s'}" "
+    When I execute cli "list --fm "{'Name' => 'name', 'Count' => '\\'Count: \\' + property(\\'Unit Tests Count\\').last_value.to_s'}" "
     Then the cli output should contain:
     """
     +----------+--------------+
@@ -29,7 +29,7 @@ Feature: Listing projects in console
 
   Scenario: listing projects catalog with simple criteria
     Given catalog filled by seeds script
-    When I execute cli "list --fm "{'Name' => 'name', 'Count' => '\\'Count: \\' + property(\\'Unit Tests Count\\').value.to_s'}" "property('Unit Tests Count').value == 6""
+    When I execute cli "list --fm "{'Name' => 'name', 'Count' => '\\'Count: \\' + property(\\'Unit Tests Count\\').last_value.to_s'}" "property('Unit Tests Count').last_value == 6""
     Then the cli output should contain:
     """
     +----------+------------+
@@ -42,7 +42,7 @@ Feature: Listing projects in console
 
   Scenario: listing projects catalog with complex criteria
     Given catalog filled by seeds script
-    When I execute cli "list --fm "{'Name' => 'name', 'Count' => '\\'Count: \\' + property(\\'Unit Tests Count\\').value.to_s'}" "property('Unit Tests Count').value == 6 || property('Unit Tests Count').value == 100""
+    When I execute cli "list --fm "{'Name' => 'name', 'Count' => '\\'Count: \\' + property(\\'Unit Tests Count\\').last_value.to_s'}" "property('Unit Tests Count').last_value == 6 || property('Unit Tests Count').last_value == 100""
     Then the cli output should contain:
     """
     +----------+--------------+

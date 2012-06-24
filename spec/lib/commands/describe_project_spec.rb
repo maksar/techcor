@@ -26,8 +26,8 @@ describe DescribeProject do
   it 'constructs format for console formatter' do
     subject.format("DATE_FORMAT").should == {
         'Metric' => 'name',
-        'Value' => 'value',
-        'Changed at' => "last_updated_at.strftime('DATE_FORMAT')",
+        'Value' => 'last_value',
+        'Changed at' => "last_updated_at.try :strftime, 'DATE_FORMAT'",
         'Changed by' => "last_updated_by"
     }
   end

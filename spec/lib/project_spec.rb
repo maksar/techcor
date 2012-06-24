@@ -27,7 +27,7 @@ describe Project do
       it 'returns last value of the property history' do
         value = 'v'
         subject.edit_property(name, stub, stub).edit_property(name, value, stub)
-        subject.property(name).value.should be value
+        subject.property(name).last_value.should be value
       end
     end
 
