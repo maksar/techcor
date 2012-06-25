@@ -8,7 +8,7 @@ end
 
 desc "Creates bunch of test data in database"
 task :seed do
-  require_relative 'db/seed'
+  require './db/seed'
   Techcor::Seed.seed
 end
 

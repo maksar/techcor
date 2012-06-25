@@ -22,8 +22,10 @@ production:
   sessions:
     default:
       hosts:
-        - localhost:27017
-      database: tc_production
+        - flame.mongohq.com:27048
+      database: app5538187
+      username: heroku
+      password: heroku
       logger: false
   options:
     raise_not_found_error: false
