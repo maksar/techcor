@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "techcor"
-  s.version = "0.0.5"
+  s.version = "0.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alexander Shestakov"]
@@ -68,6 +68,7 @@ Gem::Specification.new do |s|
     "lib/storage/project_mongo.rb",
     "lib/storage/property_value_mongo.rb",
     "lib/techcor.rb",
+    "lib/techcor/seed.rb",
     "lib/techcor/version.rb",
     "spec/integration/mongo_spec.rb",
     "spec/lib/commands/add_metric_spec.rb",
