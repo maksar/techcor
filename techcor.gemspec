@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alexander Shestakov"]
-  s.date = "2012-06-24"
+  s.date = "2012-06-25"
   s.description = "This gem provides 'techcor' console utility, which allows to collect and manage different metrics on software projects."
   s.email = "Maksar.mail@gmail.com"
   s.executables = ["techcor"]
