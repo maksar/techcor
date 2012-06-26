@@ -1,6 +1,6 @@
 class DescribeProject < Struct.new :project_name, :date_format
-  def call formatter = formatter, records = records
-    formatter.present records
+  def call formatter_class = ConsoleFormatter, records = records
+    formatter(formatter_class).present records
   end
 
   def project project_name = project_name
@@ -11,8 +11,8 @@ class DescribeProject < Struct.new :project_name, :date_format
     project.metrics
   end
 
-  def formatter format = format
-    ConsoleFormatter.new format
+  def formatter formatter_class, format = format
+    formatter_class.new format
   end
 
   def format date_format = date_format

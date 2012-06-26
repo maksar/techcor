@@ -1,11 +1,17 @@
 require 'spec_helper'
 
 describe ListProjects do
-  it 'passes format to console formatter' do
-    format = '42'
-    ConsoleFormatter.should_receive(:new).with(eval(format))
 
-    ListProjects.new(format).formatter
+  class DummyListFormatter < Struct.new :format
+    def present records
+      records
+    end
+  end
+
+  it 'passes format to formatter class' do
+    format = '42'
+
+    ListProjects.new(format).formatter(DummyListFormatter).format.should == 42
   end
 
   it 'gets list of projects from catalog according to criteria' do
@@ -18,12 +24,9 @@ describe ListProjects do
   end
 
   it 'presents projects to table view' do
-    result = stub(:result)
-
     projects = stub(:projects)
-    formatter = stub(:formatter).tap { |f| f.should_receive(:present).with(projects) { result } }
 
-    subject.call(formatter, projects).should == result
+    ListProjects.new('42').call(DummyListFormatter, projects).should == projects
   end
 
   it 'uses default format if no format string was specified' do
@@ -32,7 +35,7 @@ describe ListProjects do
     command = ListProjects.new(nil)
     command.should_receive(:default_format) { result }
 
-    command.formatter
+    command.formatter(DummyListFormatter)
   end
 
   it 'builds default format as list of all metrics for all projects' do

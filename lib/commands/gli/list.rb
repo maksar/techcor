@@ -8,7 +8,7 @@ class TechcorCli
     command.flag :fm, :format
 
     command.action do |global, options, args|
-      puts ListProjects.new(options[:format], args.first).call
+      puts ListProjects.new(options[:format], args.first).call ConsoleFormatter
     end
   end
 end

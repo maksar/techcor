@@ -9,7 +9,7 @@ class TechcorCli
     command.flag :df, :date_format
 
     command.action do |global, options, args|
-      puts DescribeProject.new(args.first, options[:date_format]).call
+      puts DescribeProject.new(args.first, options[:date_format]).call ConsoleFormatter
     end
   end
 

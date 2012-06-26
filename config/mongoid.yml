@@ -21,11 +21,7 @@ test:
 production:
   sessions:
     default:
-      hosts:
-        - <%= ENV['MONGOID_HOST'] || 'localhost' %>:<%= ENV['MONGOID_PORT'] || '27017' %>
-      database: <%= ENV['MONGOID_DATABASE'] || 'techcor_production' %>
-      username: <%= ENV['MONGOID_USERNAME'] %>
-      password: <%= ENV['MONGOID_PASSWORD'] %>
+      uri: <%= ENV['MONGOHQ_URL'] %>
       logger: false
   options:
     raise_not_found_error: false

@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/mongoid/mongoid.git
+  revision: 216839d66c7a7017a7e07e4fa8126ca686ca191e
+  specs:
+    mongoid (3.0.0.rc)
+      activemodel (~> 3.1)
+      moped (~> 1.0.0.rc)
+      origin (~> 1.0.1)
+      tzinfo (~> 0.3.22)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -42,11 +52,6 @@ GEM
       rdoc
     json (1.7.3)
     method_source (0.7.1)
-    mongoid (3.0.0.rc)
-      activemodel (~> 3.1)
-      moped (~> 1.0.0.rc)
-      origin (~> 1.0.0.rc)
-      tzinfo (~> 0.3.22)
     mongoid-rspec (1.4.6)
       mongoid (>= 3.0.0.rc)
       rake
@@ -88,7 +93,7 @@ DEPENDENCIES
   gli (~> 2.0.0.rc)
   hirb
   jeweler
-  mongoid (~> 3.0.0.rc)
+  mongoid!
   mongoid-rspec
   pry
   rake

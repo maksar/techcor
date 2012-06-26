@@ -16,7 +16,7 @@ group :development do
 end
 
 gem 'activesupport'
-gem 'mongoid', '~> 3.0.0.rc'
+gem 'mongoid', :git => 'https://github.com/mongoid/mongoid.git'
 gem 'bson_ext'
 gem 'hirb'
 gem 'gli', '~> 2.0.0.rc'

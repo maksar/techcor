@@ -11,6 +11,7 @@ $: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
 require 'project'
 require 'property_value'
 require 'project_catalog'
+require 'formatter'
 require 'console_formatter'
 require 'metrics/metric'
 require 'metrics/number_metric'

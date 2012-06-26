@@ -1,20 +1,25 @@
 require 'spec_helper'
 
 describe DescribeProject do
-  it 'presents properties to table view' do
-    result = stub(:result)
 
-    records = stub(:records)
-    formatter = stub(:formatter).tap { |f| f.should_receive(:present).with(records) { result } }
-
-    subject.call(formatter, records).should == result
+  class DummyDescribeFormatter < Struct.new :format
+    def present records
+      records
+    end
   end
 
-  it 'passes format to console formatter' do
-    format = stub(:format)
-    ConsoleFormatter.should_receive(:new).with(format)
 
-    subject.formatter(format)
+  it 'presents properties to table view' do
+    records = stub(:records)
+
+    subject.call(DummyDescribeFormatter, records).should == records
+  end
+
+  it 'passes format to formatter class' do
+    format = stub(:format)
+    formatter = stub.tap { |f| f.should_receive(:new).with(format) }
+
+    subject.formatter(formatter, format)
   end
 
   it 'collects metrics from project' do

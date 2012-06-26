@@ -1,14 +1,14 @@
 class ListProjects < Struct.new :format, :criteria
-  def call formatter = formatter, projects = projects
-    formatter.present projects
+  def call formatter_class = formatter_class, projects = projects
+    formatter(formatter_class).present projects
   end
 
   def projects catalog = ProjectCatalog.load, criteria = criteria
     catalog.projects criteria
   end
 
-  def formatter(format = format.present? ? eval(format) : default_format)
-    ConsoleFormatter.new format
+  def formatter(formatter_class, format = format.present? ? eval(format) : default_format)
+    formatter_class.new format
   end
 
   def default_format projects = projects
