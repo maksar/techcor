@@ -3,7 +3,7 @@ development:
     default:
       hosts:
         - localhost:27017
-      database: tc_development
+      database: techcor_development
       logger: false
   options:
     raise_not_found_error: false
@@ -13,7 +13,7 @@ test:
     default:
       hosts:
         - localhost:27017
-      database: tc_test
+      database: techcor_test
       logger: false
   options:
     raise_not_found_error: false
@@ -22,10 +22,10 @@ production:
   sessions:
     default:
       hosts:
-        - flame.mongohq.com:27048
-      database: app5538187
-      username: heroku
-      password: heroku
+        - <%= ENV['MONGOID_HOST'] || 'localhost' %>:<%= ENV['MONGOID_PORT'] || '27017' %>
+      database: <%= ENV['MONGOID_DATABASE'] || 'techcor_production' %>
+      username: <%= ENV['MONGOID_USERNAME'] %>
+      password: <%= ENV['MONGOID_PASSWORD'] %>
       logger: false
   options:
     raise_not_found_error: false
