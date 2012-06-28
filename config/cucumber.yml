@@ -1,2 +1,2 @@
 ---
-default: --color --format progress  
+default: --format progress
