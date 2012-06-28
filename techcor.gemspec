@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "techcor"
-  s.version = "0.0.9"
+  s.version = "0.0.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alexander Shestakov"]
-  s.date = "2012-06-26"
+  s.date = "2012-06-28"
   s.description = "This gem provides 'techcor' console utility, which allows to collect and manage different metrics on software projects."
   s.email = "Maksar.mail@gmail.com"
   s.executables = ["techcor"]
@@ -34,7 +34,6 @@ Gem::Specification.new do |s|
     "features/list_projects.feature",
     "features/property_history.feature",
     "features/rake.feature",
-    "features/seeds.feature",
     "features/step_definitions/add_project.rb",
     "features/step_definitions/console_interface.rb",
     "features/step_definitions/list_projects.rb",
@@ -89,6 +88,7 @@ Gem::Specification.new do |s|
     "spec/lib/storage/metric_mongo_spec.rb",
     "spec/lib/storage/project_mongo_spec.rb",
     "spec/lib/storage/property_value_mongo_spec.rb",
+    "spec/lib/techcor/seed_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/maksar/techcor"
